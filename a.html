@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>meo1.me</title>
+<style>
+  body {
+    margin:0;
+    height:100vh;
+    background:#0e0e0e;
+    color:white;
+    font-family:sans-serif;
+    overflow:hidden;
+  }
+  button {
+    font-size:22px;
+    padding:16px 30px;
+    position:absolute;
+    inset:0;
+    margin:auto;
+    z-index:10;
+  }
+  .overlay {
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:300px;
+    height:180px;
+    background:#ffd6e7;
+    color:#333;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 0 40px rgba(0,0,0,0.6);
+    animation: pop 0.25s ease;
+  }
+  @keyframes pop {
+    from { transform:translate(-50%,-50%) scale(0.8); opacity:0; }
+    to { transform:translate(-50%,-50%) scale(1); opacity:1; }
+  }
+</style>
+</head>
+
+<body>
+
+<button id="btn">Click for something cute</button>
+
+<script>
+let count = 0;
+
+document.getElementById("btn").addEventListener("click", () => {
+  count++;
+
+  const o = document.createElement("div");
+  o.className = "overlay";
+
+  if (count < 3) {
+    o.innerHTML = "૮ ˶ᵔ ᵕ ᵔ˶ ა<br>hi friend!";
+  } else if (count < 5) {
+    o.style.background = "#ffb3d9";
+    o.innerHTML = "still clicking?";
+  } else if (count < 7) {
+    o.style.background = "#c77d9f";
+    o.style.color = "white";
+    o.innerHTML = "you can stop now.";
+  } else {
+    o.style.background = "#111";
+    o.style.color = "#eee";
+    o.style.width = "100vw";
+    o.style.height = "100vh";
+    o.style.borderRadius = "0";
+    o.innerHTML = "<h1>😈</h1><p>okay relax, prank over.</p>";
+  }
+
+  document.body.appendChild(o);
+});
+</script>
+
+</body>
+</html>
